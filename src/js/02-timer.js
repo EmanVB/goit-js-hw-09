@@ -4,10 +4,10 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const dateTimePicker = document.querySelector('input#datetime-picker');
 const startButton = document.querySelector('button[data-start]');
-const days = document.querySelector('span[data-days]');
-const hours = document.querySelector('span[data-hours]');
-const minutes = document.querySelector('span[data-minutes]');
-const seconds = document.querySelector('span[data-seconds]');
+const dayText = document.querySelector('span[data-days]');
+const hourText = document.querySelector('span[data-hours]');
+const minuteText = document.querySelector('span[data-minutes]');
+const secondText = document.querySelector('span[data-seconds]');
 
 startButton.disabled = true;
 
@@ -44,12 +44,12 @@ const options = {
           return;
         }
         const timeDifference = selectedDate - currentDate;
-        const { day, hour, minute, second } = convertMs(timeDifference);
+        const { days, hours, minutes, seconds } = convertMs(timeDifference);
 
-        days.textContent = addLeadingZero(day);
-        hours.textContent = addLeadingZero(hour);
-        minutes.textContent = addLeadingZero(minute);
-        seconds.textContent = addLeadingZero(second);
+        dayText.textContent = addLeadingZero(days);
+        hourText.textContent = addLeadingZero(hours);
+        minuteText.textContent = addLeadingZero(minutes);
+        secondText.textContent = addLeadingZero(seconds);
       });
     }
   },
