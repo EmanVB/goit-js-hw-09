@@ -27,6 +27,31 @@ const options = {
     }
 
     startButton.disabled = false;
+    let intervalId = null;
+
+    startButton.addEventListener('click', startCountdown);
+
+    function startCountdown() {
+      startButton.disabled = true;
+      dateTimePicker.disabled = true;
+
+      intervalId = setInterval(() => {
+        const currentDate = Date.now();
+
+        if (selectedDate < currentDate) {
+          clearInterval(intervalId);
+          dateTimePicker.disabled = false;
+          return;
+        }
+        const timeDifference = selectedDate - currentDate;
+        const { day, hour, minute, second } = convertMs(timeDifference);
+
+        days.textContent = addLeadingZero(day);
+        hours.textContent = addLeadingZero(hour);
+        minutes.textContent = addLeadingZero(minute);
+        seconds.textContent = addLeadingZero(second);
+      });
+    }
   },
 };
 
