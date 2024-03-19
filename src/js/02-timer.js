@@ -9,7 +9,13 @@ const hourText = document.querySelector('span[data-hours]');
 const minuteText = document.querySelector('span[data-minutes]');
 const secondText = document.querySelector('span[data-seconds]');
 
-startButton.disabled = true;
+const clk = document.querySelector('.timer');
+clk.style.display = 'flex';
+clk.style.gap = '30px';
+
+const body = document.querySelector('body');
+body.style.textTransform = 'uppercase';
+body.style.fontWeight = 'bold';
 
 const options = {
   enableTime: true,
